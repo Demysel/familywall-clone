@@ -1,31 +1,23 @@
-const API_KEY = "$2a$10$j99ZptquF7iTqI/UP0xQMucBLqWZW/8bTlz859GxEqzmmfq0DpR4."; // Remplace par ta clé API
-const BASE_URL = "https://api.jsonbin.io/v3/b/";
+// src/api.js
+const BASE_URL = "https://api.jsonbin.io/v3/b/";  // Change si nécessaire
 
-export const fetchData = async (binId) => {
-  try {
-    const response = await fetch(`${BASE_URL}${binId}/latest`, {
-      headers: {
-        "X-Master-Key": API_KEY
-      }
-    });
-    if (!response.ok) {
-      throw new Error("Erreur lors de la récupération des données");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
+const headers = {
+  "Content-Type": "application/json",
+  "X-Master-Key": "$2a$10$j99ZptquF7iTqI/UP0xQMucBLqWZW/8bTlz859GxEqzmmfq0DpR4.",  // Remplace par ta clé d'API
 };
 
-export const saveData = async (binId, data) => {
-  try {
-    const response = await fetch(`${BASE_URL}${binId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Master-Key": API_KEY
-      },
-      body: JSON.stringify(data)
-    });
-    r
+export async function fetchData(binId) {
+  const response = await fetch(`${BASE_URL}${binId}`, { headers });
+  const data = await response.json();
+  return data;
+}
+
+export async function saveData(binId, data) {
+  const response = await fetch(`${BASE_URL}${binId}`, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({ record: data }),
+  });
+  const result = await response.json();
+  return result;
+}

@@ -21,4 +21,19 @@ function App() {
 }
 
 export default App;
+import React from "react";
+import TaskList from "./components/TaskList";
+import CalendarComponent from "./components/CalendarComponent";
+
+function App() {
+  return (
+    <div>
+      <h1>Bienvenue sur FamilyWall Clone</h1>
+      <TaskList />
+      <CalendarComponent />
+    </div>
+  );
+}
+
+export default App;
 

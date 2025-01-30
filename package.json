@@ -5,11 +5,12 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-big-calendar": "^1.5.1"
+    "react-scripts": "^5.0.0",  // Ajoute ceci si ce n'est pas déjà présent
+    "react-big-calendar": "^1.5.1",
+    "moment": "^2.29.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
   }
 }
-
